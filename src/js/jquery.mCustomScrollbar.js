@@ -398,7 +398,7 @@ $.fn.mCustomScrollbar = function (options){
 		}
 		
 		$(window).resize(function() {
-			if(scrollType=="horizontal"){
+			if(options.scrollType=="horizontal"){
 				if($dragger.position().left>$dragger_container.width()-$dragger.width()){
 					$dragger.css("left", $dragger_container.width()-$dragger.width());
 				}
