@@ -13,20 +13,35 @@ $.fn.mCustomScrollbar = function (options){
 		scrollBtnsSupport: false,      // if true, enable the scroll by pressing buttons
 		scrollBtnsSpeed:   10,         // speed of the scroll by pressing buttons
 		
-		globalContainerCssClass : 		undefined, //
-		constructMarkup:				true,
+		constructMarkup:				true, 		// Construct auto all the markup
+		moveClassToGlobalContainer: 	true, 		// Move all the class to global container work with constructMarkup
+		globalContainerClass : 			undefined, 	// css class for global container		
 	}
 
 	options = $.extend(true, {}, defaults, options);
 	
 	this.each(function(){
 		var $me = $(this);
+		var oldClasses ="";
 		
 		if(options.constructMarkup)
+		{
+			if(options.moveClassToGlobalContainer)
+			{
+				oldClasses= $me.attr('class');
+				$me.attr('class','');
+			}
+			
 			$me = PrepareCustomScrollBar();
+			
+			if(options.moveClassToGlobalContainer)
+			{
+				$me.addClass(oldClasses);
+			}			
+		}
 		
-		if(options.globalContainerCssClass)
-			$me.addClass(options.globalContainerCssClass);
+		if(options.globalContainerClass)
+			$me.addClass(options.globalContainerClass);
 		
 		var $customScrollBox=$me.find(".customScrollBox");
 		var $customScrollBox_container=$me.find(".customScrollBox .container");
