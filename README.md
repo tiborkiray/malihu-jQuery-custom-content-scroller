@@ -1,3 +1,5 @@
+IE 7 compatibility   
+==================
 malihu-jQuery-custom-content-scroller
 =====================================
 
